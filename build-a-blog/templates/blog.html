@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% content block %}
+
+<hr />
+
+<hr />
+
+{% if blog|length == 0 %}
+<p>Make your new post</p>
+{% else %}
+
+    <ul>
+        {% for blog_title in blog %}
+        <li><a href="{{  }}" >{{blog.blog_title}}</a>
+            <form method="POST" action="/delete-post" style="display:inline-block;">
+                <input type="hidden" name="post-id" value="{{post.id}}" />
+                <input type="submit" value="Done!" />
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

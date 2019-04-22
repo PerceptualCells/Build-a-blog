@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% content block %}
+
+<h1>Write a new blog post</h1>
+<form method='POST' action="/">
+    <label>
+    Title:
+        <input type="text" name='title' />
+    </label>
+    <label>
+    Post:
+    <input type="text" name="n_blog" value="0"/>
+    <textarea type="text" name="plaintext">{0}</textarea>
+    </label>
+    <input type="submit" value='newpost' />
+</form>
+{% if not new_title =="" %}
+<h1>{{new_title}}</h1>
+<hr/>
+<p>
+    {{ new_body }}
+</p>
+{% endif %}
+{% endblock %}
