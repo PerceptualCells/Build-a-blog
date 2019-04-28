@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
-{% content block %}
+{% block content %}
 
 <h1>Write a new blog post</h1>
-<form method='POST' action="/">
+<form method='POST' action="/newpost">
     <label>
     Title:
         <input type="text" name='title' />
     </label>
     <label>
+<br>        
     Post:
-    <input type="text" name="n_blog" value="0"/>
-    <textarea type="text" name="plaintext">{0}</textarea>
+    <textarea rows="10" cols="80" type="text" name="plaintext">{% with messages = get_flashed_messages() %}
+        {% for messages in messages %}
+            <li>{{messages}}</li>
+        {% endfor %}
+    {% endwith %}</textarea>
     </label>
     <input type="submit" value='newpost' />
 </form>
-{% if not new_title =="" %}
-<h1>{{new_title}}</h1>
-<hr/>
-<p>
-    {{ new_body }}
-</p>
-{% endif %}
+
 {% endblock %}
+
+
