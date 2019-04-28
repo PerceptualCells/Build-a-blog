@@ -8,14 +8,15 @@
     Title:
         <input type="text" name='title' />
     </label>
-    <label>
-<br>        
+    <label>{% with messages = get_flashed_messages() %}
+            {% for messages in messages %}
+                {{messages}}
+            {% endfor %}
+        {% endwith %} 
+<br>       
+
     Post:
-    <textarea rows="10" cols="80" type="text" name="plaintext">{% with messages = get_flashed_messages() %}
-        {% for messages in messages %}
-            <li>{{messages}}</li>
-        {% endfor %}
-    {% endwith %}</textarea>
+    <textarea rows="10" cols="80" type="text" name="plaintext"></textarea>
     </label>
     <input type="submit" value='newpost' />
 </form>

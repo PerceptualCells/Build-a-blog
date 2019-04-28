@@ -43,12 +43,15 @@ def newpost():
 
         if post_verify(blog_title) == False and post_verify(body) == True:
             flash("Missing blog title")
+            return render_template('newpost.html',title="Blog posts" )
 
         elif post_verify(blog_title) == True and post_verify(body) == False:
             flash("Missing blog body")
+            return render_template('newpost.html',title="Blog posts" )
 
         elif post_verify(blog_title) == False and post_verify(body) == False:
-            flash("Empty post, scary like a ghost")    
+            flash("Empty post, You need a title and a body to post here.")    
+            return render_template('newpost.html',title="Blog posts" )
 
         else:        
             new_blog = Blog(blog_title, body)
